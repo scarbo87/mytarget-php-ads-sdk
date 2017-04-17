@@ -1,12 +1,12 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper\Type;
+namespace tests\scarbo87\RestApiSdk\Mapper\Type;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Instantiator\InstantiatorInterface;
-use Dsl\MyTarget\Mapper\Annotation\Field;
-use Dsl\MyTarget\Mapper\Mapper;
-use Dsl\MyTarget\Mapper\Type\ObjectType;
+use scarbo87\RestApiSdk\Mapper\Annotation\Field;
+use scarbo87\RestApiSdk\Mapper\Mapper;
+use scarbo87\RestApiSdk\Mapper\Type\ObjectType;
 
 class ObjectTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,21 +19,13 @@ class ObjectTypeTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->instantiator = $this->getMockBuilder(ObjectInstantiatorMock::class)
-                             ->disableOriginalConstructor()
-                             ->getMock();
-
-        $this->annotations = $this->getMockBuilder(Reader::class)
-                             ->disableOriginalConstructor()
-                             ->getMock();
-
-        $this->mapper = $this->getMockBuilder(Mapper::class)
-                             ->disableOriginalConstructor()
-                             ->getMock();
+        $this->instantiator = $this->createMock(ObjectInstantiatorMock::class);
+        $this->annotations = $this->createMock(Reader::class);
+        $this->mapper = $this->createMock(Mapper::class);
     }
 
     /**
-     * @expectedException \Dsl\MyTarget\Mapper\Exception\ClassNotFoundException
+     * @expectedException \scarbo87\RestApiSdk\Mapper\Exception\ClassNotFoundException
      */
     public function testItHydratesAndPanicsIfClassNotFound()
     {
@@ -88,7 +80,7 @@ class ObjectTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Dsl\MyTarget\Mapper\Exception\ContextAwareException
+     * @expectedException \scarbo87\RestApiSdk\Mapper\Exception\ContextAwareException
      */
     public function testItHydratesAndRethrowsException()
     {

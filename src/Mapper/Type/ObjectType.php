@@ -1,15 +1,15 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Type;
+namespace scarbo87\RestApiSdk\Mapper\Type;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Instantiator\Instantiator;
 use Doctrine\Instantiator\InstantiatorInterface;
-use Dsl\MyTarget\Mapper\Annotation\Field;
-use Dsl\MyTarget\Mapper\Exception\ContextAwareException;
-use Dsl\MyTarget\Mapper\Exception\ContextUnawareException;
-use Dsl\MyTarget\Mapper\Mapper;
-use Dsl\MyTarget\Mapper\Exception\ClassNotFoundException;
+use scarbo87\RestApiSdk\Mapper\Annotation\Field;
+use scarbo87\RestApiSdk\Mapper\Exception\ContextAwareException;
+use scarbo87\RestApiSdk\Mapper\Exception\ContextUnawareException;
+use scarbo87\RestApiSdk\Mapper\Mapper;
+use scarbo87\RestApiSdk\Mapper\Exception\ClassNotFoundException;
 
 class ObjectType implements Type
 {

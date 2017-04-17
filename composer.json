@@ -1,6 +1,6 @@
 {
-  "name": "dsl/my-target-sdk",
-  "description": "API bindings for MyTarget",
+  "name": "scarbo87/rest-api-sdk",
+  "description": "Rest api sdk skeleton",
   "type": "library",
   "require": {
     "doctrine/instantiator": "^1",
@@ -9,15 +9,13 @@
     "doctrine/annotations": "^1"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.7",
+    "phpunit/phpunit": "^5.7",
     "guzzlehttp/guzzle": "^6",
-    "doctrine/cache": "^1",
-    "dsl/cache-control": "0.1.0",
-    "psr/log": "^1"
+    "doctrine/cache": "^1"
   },
-  "license": "Apache License 2.0",
+  "license": "MIT",
   "autoload": {
-    "psr-4": {"Dsl\\MyTarget\\": "src/", "tests\\Dsl\\MyTarget\\": "tests/"},
+    "psr-4": {"scarbo87\\RestApiSdk\\": "src/", "tests\\scarbo87\\RestApiSdk\\": "tests/"},
     "files": ["src/functions.php"]
   }
 }

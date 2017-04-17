@@ -1,8 +1,8 @@
 <?php
 
-namespace Dsl\MyTarget\Exception;
+namespace scarbo87\RestApiSdk\Exception;
 
 class UnexpectedValueException extends \UnexpectedValueException
-    implements MyTargetException
+    implements SdkException
 {
 }

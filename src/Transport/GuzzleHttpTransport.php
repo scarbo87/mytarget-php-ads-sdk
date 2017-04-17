@@ -1,12 +1,12 @@
 <?php
 
-namespace Dsl\MyTarget\Transport;
+namespace scarbo87\RestApiSdk\Transport;
 
-use Dsl\MyTarget\Context;
+use scarbo87\RestApiSdk\Context;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Exception as guzzleEx;
-use Dsl\MyTarget\Transport\Exception as mtEx;
+use scarbo87\RestApiSdk\Transport\Exception as sdkEx;
 
 /**
  * An implementation of HttpTransport that uses Guzzle and depends on "guzzlehttp/guzzle" composer package
@@ -37,7 +37,7 @@ class GuzzleHttpTransport implements HttpTransport
                 $response = null;
             }
 
-            throw new mtEx\NetworkException($e->getMessage(), $request, $response, $e);
+            throw new sdkEx\NetworkException($e->getMessage(), $request, $response, $e);
         }
     }
 }

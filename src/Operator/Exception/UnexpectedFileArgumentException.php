@@ -1,11 +1,11 @@
 <?php
 
-namespace Dsl\MyTarget\Operator\Exception;
+namespace scarbo87\RestApiSdk\Operator\Exception;
 
-use Dsl\MyTarget\Exception\MyTargetException;
+use scarbo87\RestApiSdk\Exception\SdkException;
 
 class UnexpectedFileArgumentException extends \InvalidArgumentException
-    implements MyTargetException
+    implements SdkException
 {
     /**
      * @param mixed $file

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Annotation;
+namespace scarbo87\RestApiSdk\Mapper\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
 

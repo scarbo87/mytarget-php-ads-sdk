@@ -1,9 +1,9 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Type;
+namespace scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Domain\AbstractEnum;
-use Dsl\MyTarget\Mapper\Mapper;
+use scarbo87\RestApiSdk\Domain\AbstractEnum;
+use scarbo87\RestApiSdk\Mapper\Mapper;
 
 class EnumType implements Type
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dsl\MyTarget\Transport;
+namespace scarbo87\RestApiSdk\Transport;
 
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
@@ -9,9 +9,17 @@ use Psr\Http\Message\UriInterface;
 class RequestFactory
 {
     /**
+     * @var array
+     */
+    protected $defaultHeaders = [
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+    ];
+
+    /**
      * @var UriInterface
      */
-    private $baseAddress;
+    protected $baseAddress;
 
     public function __construct(UriInterface $baseAddress)
     {
@@ -19,22 +27,32 @@ class RequestFactory
     }
 
     /**
-     * @param string $method
-     * @param string $path
+     * @param array $headers
+     */
+    public function setDefaultHeaders(array $headers)
+    {
+        $this->defaultHeaders = $headers;
+    }
+
+    /**
+     * @param string     $method
+     * @param string     $path
      * @param array|null $query
+     * @param array|null $headers
      *
      * @return RequestInterface
      */
-    public function create($method, $path, array $query = null)
+    public function create($method, $path, array $query = null, array $headers = null)
     {
         $uri = $this->baseAddress->withPath($path);
 
-        if ($query) {
+        if (null !== $query) {
             $uri = $uri->withQuery(http_build_query($query));
         }
+        if (null === $headers) {
+            $headers = $this->defaultHeaders;
+        }
 
-        $request = new Request($method, $uri, ['Accept-Encoding' => 'gzip, deflate, compress']);
-
-        return $request;
+        return new Request($method, $uri, $headers);
     }
 }

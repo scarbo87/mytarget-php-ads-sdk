@@ -1,13 +1,13 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Transport\Middleware\Impl;
+namespace tests\scarbo87\RestApiSdk\Transport\Middleware\Impl;
 
-use Dsl\MyTarget\Context;
-use Dsl\MyTarget\Limiting\Exception\BannerLimitException;
+use scarbo87\RestApiSdk\Context;
+use scarbo87\RestApiSdk\Transport\Exception\code400\ClientErrorException;
+use scarbo87\RestApiSdk\Transport\Exception\code500\ServerErrorException;
 use GuzzleHttp\Psr7\Request;
-use Dsl\MyTarget\Transport\Exception as ex;
-use Dsl\MyTarget\Transport\Middleware\HttpMiddlewareStack;
-use Dsl\MyTarget\Transport\Middleware\Impl\ResponseValidatingMiddleware;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStack;
+use scarbo87\RestApiSdk\Transport\Middleware\Impl\ResponseValidatingMiddleware;
 use Psr\Http\Message\ResponseInterface;
 
 class ResponseValidatingMiddlewareTest extends \PHPUnit_Framework_TestCase
@@ -15,32 +15,29 @@ class ResponseValidatingMiddlewareTest extends \PHPUnit_Framework_TestCase
     public function testDataProvider()
     {
         return [
-            '500' => [500, ex\ServerErrorException::class],
-            '400' => [400, ex\ClientErrorException::class],
-            '300' => [300, ex\RequestException::class],
-
+            '500' => [500, ServerErrorException::class],
+            '400' => [400, ClientErrorException::class],
             '200' => [200, null],
+            '300' => [300, null],
         ];
     }
 
     /**
      * @dataProvider testDataProvider
      *
-     * @param int    $code
+     * @param int         $code
      * @param string|null $exception
      */
     public function testRequestStatusCode($code, $exception)
     {
         $request = new Request('GET', '/', ['X-Phpunit' => ['a', 'b']], 'some request data');
 
-        $response = $this->getMock(ResponseInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
         $response->method('getStatusCode')
                  ->willReturn($code);
 
         /** @var HttpMiddlewareStack|\PHPUnit_Framework_MockObject_MockObject $stack */
-        $stack = $this->getMockBuilder(HttpMiddlewareStack::class)
-                      ->disableOriginalConstructor()
-                      ->getMock();
+        $stack = $this->createMock(HttpMiddlewareStack::class);
 
         $stack->expects(self::once())
               ->method('request')
@@ -53,44 +50,5 @@ class ResponseValidatingMiddlewareTest extends \PHPUnit_Framework_TestCase
 
         $middleware = new ResponseValidatingMiddleware();
         $middleware->request($request, $stack, new Context());
-    }
-
-    /**
-     * @dataProvider bodyParsingProvider
-     *
-     * @param string $body
-     */
-    public function testBodyParsing($body)
-    {
-        $request = new Request('GET', '/', ['X-Phpunit' => ['a', 'b']], 'some request data');
-
-        $response = $this->getMock(ResponseInterface::class);
-        $response->method('getStatusCode')->willReturn(400);
-        $response->method('getBody')->willReturn($body);
-
-        /** @var HttpMiddlewareStack|\PHPUnit_Framework_MockObject_MockObject $stack */
-        $stack = $this->getMockBuilder(HttpMiddlewareStack::class)
-                      ->disableOriginalConstructor()
-                      ->getMock();
-
-        $stack->expects(self::once())
-              ->method('request')
-              ->with($request)
-              ->willReturn($response);
-
-        $this->setExpectedException(BannerLimitException::class);
-
-        $middleware = new ResponseValidatingMiddleware();
-        $middleware->request($request, $stack, new Context());
-    }
-
-    public function bodyParsingProvider()
-    {
-        return [
-            ['Active banners limit exceeded.'],
-            ['Active banners limit exceeded'],
-            ['active banners limit exceeded'],
-            ['ACTIVE banners LIMIT exceeded'],
-        ];
     }
 }

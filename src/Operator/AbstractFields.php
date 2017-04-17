@@ -1,6 +1,6 @@
 <?php
 
-namespace Dsl\MyTarget\Operator;
+namespace scarbo87\RestApiSdk\Operator;
 
 abstract class AbstractFields
 {

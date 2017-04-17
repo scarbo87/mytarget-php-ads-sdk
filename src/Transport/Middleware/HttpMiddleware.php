@@ -1,8 +1,8 @@
 <?php
 
-namespace Dsl\MyTarget\Transport\Middleware;
+namespace scarbo87\RestApiSdk\Transport\Middleware;
 
-use Dsl\MyTarget\Context;
+use scarbo87\RestApiSdk\Context;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

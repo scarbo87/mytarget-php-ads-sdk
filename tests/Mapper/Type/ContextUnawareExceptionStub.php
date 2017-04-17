@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper\Type;
+namespace tests\scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Mapper\Exception\ContextUnawareException;
+use scarbo87\RestApiSdk\Mapper\Exception\ContextUnawareException;
 
 class ContextUnawareExceptionStub extends \Exception implements ContextUnawareException
 {

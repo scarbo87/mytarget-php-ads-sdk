@@ -1,10 +1,10 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper;
+namespace scarbo87\RestApiSdk\Mapper;
 
-use Dsl\MyTarget\Domain\AbstractEnum;
-use Dsl\MyTarget\Mapper\Exception\TypeParsingException;
-use Dsl\MyTarget\Mapper\Type\Type;
+use scarbo87\RestApiSdk\Domain\AbstractEnum;
+use scarbo87\RestApiSdk\Mapper\Exception\TypeParsingException;
+use scarbo87\RestApiSdk\Mapper\Type\Type;
 
 class Mapper
 {

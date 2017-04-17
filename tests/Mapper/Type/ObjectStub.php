@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper\Type;
+namespace tests\scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Mapper\Annotation\Field;
+use scarbo87\RestApiSdk\Mapper\Annotation\Field;
 
 class ObjectStub extends ObjectParentStub
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Exception;
+namespace scarbo87\RestApiSdk\Mapper\Exception;
 
-use Dsl\MyTarget\Exception\MyTargetException;
+use scarbo87\RestApiSdk\Exception\SdkException;
 
 class ClassNotFoundException extends \LogicException
-    implements MyTargetException, ContextUnawareException
+    implements SdkException, ContextUnawareException
 {
     /**
      * @var string

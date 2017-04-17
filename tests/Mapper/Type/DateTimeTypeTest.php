@@ -1,9 +1,9 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper\Type;
+namespace tests\scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Mapper\Mapper;
-use Dsl\MyTarget\Mapper\Type\DateTimeType;
+use scarbo87\RestApiSdk\Mapper\Mapper;
+use scarbo87\RestApiSdk\Mapper\Type\DateTimeType;
 
 class DateTimeTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,9 +12,7 @@ class DateTimeTypeTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->mapper = $this->getMockBuilder(Mapper::class)
-             ->disableOriginalConstructor()
-             ->getMock();
+        $this->mapper = $this->createMock(Mapper::class);
     }
 
     public function testItHydratesFromStandardFormatAndTimeZone()

@@ -1,10 +1,10 @@
 <?php
 
-namespace Dsl\MyTarget\Transport\Middleware\Impl;
+namespace scarbo87\RestApiSdk\Transport\Middleware\Impl;
 
-use Dsl\MyTarget\Context;
-use Dsl\MyTarget\Transport\Middleware\HttpMiddleware;
-use Dsl\MyTarget\Transport\Middleware\HttpMiddlewareStack;
+use scarbo87\RestApiSdk\Context;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddleware;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStack;
 use Psr\Http\Message\RequestInterface;
 
 class CallbackMiddleware implements HttpMiddleware

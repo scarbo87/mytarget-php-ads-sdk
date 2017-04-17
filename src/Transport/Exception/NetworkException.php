@@ -1,6 +1,6 @@
 <?php
 
-namespace Dsl\MyTarget\Transport\Exception;
+namespace scarbo87\RestApiSdk\Transport\Exception;
 
 class NetworkException extends RequestException
 {

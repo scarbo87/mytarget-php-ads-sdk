@@ -1,8 +1,8 @@
 <?php
 
-namespace Dsl\MyTarget\Exception;
+namespace scarbo87\RestApiSdk\Exception;
 
-class InvalidArgumentException extends \Exception implements MyTargetException
+class InvalidArgumentException extends \InvalidArgumentException implements SdkException
 {
 
 }

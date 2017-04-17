@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper\Type;
+namespace tests\scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Domain\AbstractEnum;
+use scarbo87\RestApiSdk\Domain\AbstractEnum;
 
 class EnumTypeMock extends AbstractEnum
 {

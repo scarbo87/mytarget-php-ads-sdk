@@ -1,6 +1,6 @@
 <?php
 
-namespace Dsl\MyTarget\Domain\Exception;
+namespace scarbo87\RestApiSdk\Domain\Exception;
 
 class InvalidEnumValueException extends \InvalidArgumentException
 {

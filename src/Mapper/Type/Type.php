@@ -1,10 +1,10 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Type;
+namespace scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Mapper\Exception\ContextAwareException;
-use Dsl\MyTarget\Mapper\Exception\ContextUnawareException;
-use Dsl\MyTarget\Mapper\Mapper;
+use scarbo87\RestApiSdk\Mapper\Exception\ContextAwareException;
+use scarbo87\RestApiSdk\Mapper\Exception\ContextUnawareException;
+use scarbo87\RestApiSdk\Mapper\Mapper;
 
 /**
  * Implements data mapper for a particular type (or a kind)

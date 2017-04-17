@@ -1,8 +1,8 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Type;
+namespace scarbo87\RestApiSdk\Mapper\Type;
 
-use Dsl\MyTarget\Mapper\Mapper;
+use scarbo87\RestApiSdk\Mapper\Mapper;
 
 class MixedType implements Type
 {

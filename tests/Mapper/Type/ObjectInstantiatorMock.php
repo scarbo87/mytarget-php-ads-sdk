@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper\Type;
+namespace tests\scarbo87\RestApiSdk\Mapper\Type;
 
 use Doctrine\Instantiator\InstantiatorInterface;
 

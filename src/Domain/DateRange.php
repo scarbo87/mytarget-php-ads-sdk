@@ -1,8 +1,8 @@
 <?php
 
-namespace Dsl\MyTarget\Domain;
+namespace scarbo87\RestApiSdk\Domain;
 
-use Dsl\MyTarget as f;
+use scarbo87\RestApiSdk as f;
 
 class DateRange
 {

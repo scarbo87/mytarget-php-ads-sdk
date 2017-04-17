@@ -1,13 +1,13 @@
 <?php
 
-namespace Dsl\MyTarget\Transport\Exception;
+namespace scarbo87\RestApiSdk\Transport\Exception;
 
-use Dsl\MyTarget\Exception\MyTargetException;
+use scarbo87\RestApiSdk\Exception\SdkException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class RequestException extends \RuntimeException
-    implements MyTargetException
+    implements SdkException
 {
 
     /**

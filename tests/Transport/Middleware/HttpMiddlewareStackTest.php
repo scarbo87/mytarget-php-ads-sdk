@@ -1,12 +1,12 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Transport\Middleware;
+namespace tests\scarbo87\RestApiSdk\Transport\Middleware;
 
-use Dsl\MyTarget\Context;
+use scarbo87\RestApiSdk\Context;
 use GuzzleHttp\Psr7\Response;
-use Dsl\MyTarget\Transport\HttpTransport;
-use Dsl\MyTarget\Transport\Middleware\HttpMiddleware;
-use Dsl\MyTarget\Transport\Middleware\HttpMiddlewareStack;
+use scarbo87\RestApiSdk\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddleware;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStack;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

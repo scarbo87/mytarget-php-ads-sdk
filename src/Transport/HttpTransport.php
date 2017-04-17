@@ -1,9 +1,9 @@
 <?php
 
-namespace Dsl\MyTarget\Transport;
+namespace scarbo87\RestApiSdk\Transport;
 
-use Dsl\MyTarget\Context;
-use Dsl\MyTarget\Transport\Exception\NetworkException;
+use scarbo87\RestApiSdk\Context;
+use scarbo87\RestApiSdk\Transport\Exception\NetworkException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dsl\MyTarget\Mapper\Exception;
+namespace scarbo87\RestApiSdk\Mapper\Exception;
 
 interface ContextUnawareException
 {

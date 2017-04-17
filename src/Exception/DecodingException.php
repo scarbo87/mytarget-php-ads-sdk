@@ -1,9 +1,9 @@
 <?php
 
-namespace Dsl\MyTarget\Exception;
+namespace scarbo87\RestApiSdk\Exception;
 
 class DecodingException extends \RuntimeException
-    implements MyTargetException, ApiException
+    implements SdkException, ApiException
 {
     /**
      * @param string $decodingError

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dsl\MyTarget\Transport\Middleware;
+namespace scarbo87\RestApiSdk\Transport\Middleware;
 
-use Dsl\MyTarget\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\HttpTransport;
 
 class HttpMiddlewareStackPrototype extends HttpMiddlewareStack
 {

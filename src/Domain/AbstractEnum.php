@@ -1,9 +1,9 @@
 <?php
 
-namespace Dsl\MyTarget\Domain;
+namespace scarbo87\RestApiSdk\Domain;
 
-use Dsl\MyTarget\Domain\Exception\InvalidEnumNameException;
-use Dsl\MyTarget\Domain\Exception\InvalidEnumValueException;
+use scarbo87\RestApiSdk\Domain\Exception\InvalidEnumNameException;
+use scarbo87\RestApiSdk\Domain\Exception\InvalidEnumValueException;
 
 /**
  * Identity enum, makes sure that enum objects of the same value are always identical

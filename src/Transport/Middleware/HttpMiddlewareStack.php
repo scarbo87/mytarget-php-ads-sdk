@@ -1,10 +1,10 @@
 <?php
 
-namespace Dsl\MyTarget\Transport\Middleware;
+namespace scarbo87\RestApiSdk\Transport\Middleware;
 
-use Dsl\MyTarget\Context;
-use Dsl\MyTarget\Transport\HttpTransport;
-use Dsl\MyTarget\Transport\Middleware\Impl\TerminatingMiddleware;
+use scarbo87\RestApiSdk\Context;
+use scarbo87\RestApiSdk\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\Middleware\Impl\TerminatingMiddleware;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 

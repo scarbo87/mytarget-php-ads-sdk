@@ -1,14 +1,14 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Mapper;
+namespace tests\scarbo87\RestApiSdk\Mapper;
 
-use Dsl\MyTarget\Mapper\Mapper;
-use Dsl\MyTarget\Mapper\Type\ArrayType;
-use Dsl\MyTarget\Mapper\Type\ScalarType;
-use Dsl\MyTarget\Mapper\Type\MixedType;
-use Dsl\MyTarget\Mapper\Type\EnumType;
-use Dsl\MyTarget\Mapper\Type\ObjectType;
-use tests\Dsl\MyTarget\Mapper\Type\EnumTypeMock;
+use scarbo87\RestApiSdk\Mapper\Mapper;
+use scarbo87\RestApiSdk\Mapper\Type\ArrayType;
+use scarbo87\RestApiSdk\Mapper\Type\ScalarType;
+use scarbo87\RestApiSdk\Mapper\Type\MixedType;
+use scarbo87\RestApiSdk\Mapper\Type\EnumType;
+use scarbo87\RestApiSdk\Mapper\Type\ObjectType;
+use tests\scarbo87\RestApiSdk\Mapper\Type\EnumTypeMock;
 
 class MapperTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,11 +17,11 @@ class MapperTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->types = [
-            'array' => $this->getMock(ArrayType::class),
-            'scalar' => $this->getMock(ScalarType::class),
-            'mixed' => $this->getMock(MixedType::class),
-            'enum' => $this->getMock(EnumType::class),
-            'object' => $this->getMockBuilder(ObjectType::class)->disableOriginalConstructor()->getMock()
+            'array' => $this->createMock(ArrayType::class),
+            'scalar' => $this->createMock(ScalarType::class),
+            'mixed' => $this->createMock(MixedType::class),
+            'enum' => $this->createMock(EnumType::class),
+            'object' => $this->createMock(ObjectType::class),
         ];
     }
 
@@ -49,7 +49,7 @@ class MapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Dsl\MyTarget\Mapper\Exception\TypeParsingException
+     * @expectedException \scarbo87\RestApiSdk\Mapper\Exception\TypeParsingException
      */
     public function testItHydratesAndPanicsIfTypeNotGiven()
     {
@@ -83,7 +83,7 @@ class MapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Dsl\MyTarget\Mapper\Exception\TypeParsingException
+     * @expectedException \scarbo87\RestApiSdk\Mapper\Exception\TypeParsingException
      */
     public function testItMakesSnapshotAndPanicsIfTypeNotGiven()
     {

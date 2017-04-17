@@ -1,66 +1,54 @@
 <?php
 
-namespace tests\Dsl\MyTarget\Transport\Middleware\Impl;
+namespace tests\scarbo87\RestApiSdk\Transport\Middleware\Impl;
 
-use Dsl\MyTarget\Context;
+use scarbo87\RestApiSdk\Context;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception as guzzleEx;
 use GuzzleHttp\Psr7 as psr;
-use MyTarget as f;
-use Dsl\MyTarget\Client;
-use Dsl\MyTarget\Transport\Exception as ex;
-use Dsl\MyTarget\Transport\GuzzleHttpTransport;
-use Dsl\MyTarget\Transport\HttpTransport;
-use Dsl\MyTarget\Transport\Middleware\HttpMiddlewareStackPrototype;
-use Dsl\MyTarget\Transport\RequestFactory;
+use scarbo87\RestApiSdk\Client;
+use scarbo87\RestApiSdk\Transport\Exception as ex;
+use scarbo87\RestApiSdk\Transport\GuzzleHttpTransport;
+use scarbo87\RestApiSdk\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStackPrototype;
+use scarbo87\RestApiSdk\Transport\RequestFactory;
 use PHPUnit_Framework_MockObject_MockObject;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     public function testRequestSuccess()
     {
         /** @var HttpTransport|PHPUnit_Framework_MockObject_MockObject $http */
-        $http = $this->getMockBuilder(GuzzleHttpTransport::class)
-                     ->disableOriginalConstructor()
-                     ->getMock();
+        $http = $this->createMock(GuzzleHttpTransport::class);
 
         $http
             ->expects(self::once())
             ->method('request')
-            ->willReturn(call_user_func(function() {
-                $response = $this->getMock(ResponseInterface::class);
-                $response->method('getBody')
-                         ->willReturn(psr\stream_for('{"json": true}'));
-
-                return $response;
-            }))
-        ;
+            ->willReturnCallback(
+                function () {
+                    return $this->createMock(ResponseInterface::class);
+                }
+            );
 
         $client = new Client(
-            new RequestFactory(new psr\Uri('https://target.my.com')),
+            new RequestFactory(new psr\Uri('https://example.com')),
             HttpMiddlewareStackPrototype::newEmpty($http)
         );
 
         self::assertNotEmpty($client->get('/any/path', null, new Context()));
     }
 
-    /**
-     *
-     */
     public function testRequestTransportException()
     {
-        $guzzle = $this->getMock(ClientInterface::class);
+        /** @var ClientInterface|PHPUnit_Framework_MockObject_MockObject $guzzle */
+        $guzzle = $this->createMock(ClientInterface::class);
         $guzzle->method('send')
-            ->willThrowException(new guzzleEx\ClientException('', $this->getMock(RequestInterface::class)));
+               ->willThrowException(new guzzleEx\ClientException('', $this->createMock(RequestInterface::class)));
 
         $client = new Client(
-            new RequestFactory(new psr\Uri('https://target.my.com')),
+            new RequestFactory(new psr\Uri('https://example.com')),
             HttpMiddlewareStackPrototype::newEmpty(new GuzzleHttpTransport($guzzle))
         );
 
