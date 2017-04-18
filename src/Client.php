@@ -86,6 +86,27 @@ class Client
     }
 
     /**
+     * Makes PATCH request and returns response
+     *
+     * @param string     $path
+     * @param array|null $query
+     * @param array|null $body
+     * @param Context    $context
+     *
+     * @return ResponseInterface
+     */
+    public function patch($path, array $query = null, $body = null, Context $context)
+    {
+        $request = $this->requestFactory->create('PATCH', $path, $query);
+        if ($body !== null) {
+            /** @var RequestInterface $request */
+            $request = $request->withBody(psr\stream_for(json_encode($body)));
+        }
+
+        return $this->http->freeze()->request($request, $context);
+    }
+
+    /**
      * Makes DELETE request and returns response
      *
      * @param string     $path
