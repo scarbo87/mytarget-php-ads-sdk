@@ -5,11 +5,14 @@ namespace scarbo87\RestApiSdk\Transport\Middleware\Impl;
 use scarbo87\RestApiSdk\Context;
 use scarbo87\RestApiSdk\Transport\Exception\code400\ClientErrorException;
 use scarbo87\RestApiSdk\Transport\Exception\code500\ServerErrorException;
-use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddleware;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareInterface;
 use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStack;
 use Psr\Http\Message\RequestInterface;
 
-class ResponseValidatingMiddleware implements HttpMiddleware
+/**
+ * @api
+ */
+class ResponseValidatingMiddleware implements HttpMiddlewareInterface
 {
     /**
      * @inheritdoc

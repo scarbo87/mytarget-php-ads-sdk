@@ -3,7 +3,7 @@
 namespace scarbo87\RestApiSdk\Transport\Middleware;
 
 use scarbo87\RestApiSdk\Context;
-use scarbo87\RestApiSdk\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\HttpTransportInterface;
 use scarbo87\RestApiSdk\Transport\Middleware\Impl\TerminatingMiddleware;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -11,20 +11,20 @@ use Psr\Http\Message\ResponseInterface;
 class HttpMiddlewareStack
 {
     /**
-     * @var \SplStack|HttpMiddleware[]
+     * @var \SplStack|HttpMiddlewareInterface[]
      */
     protected $middlewares;
 
     /**
-     * @var HttpTransport
+     * @var HttpTransportInterface
      */
     protected $http;
 
     /**
-     * @param \SplStack|HttpMiddleware[] $middlewares
-     * @param HttpTransport $http
+     * @param \SplStack|HttpMiddlewareInterface[] $middlewares
+     * @param HttpTransportInterface              $http
      */
-    public function __construct(\SplStack $middlewares, HttpTransport $http)
+    public function __construct(\SplStack $middlewares, HttpTransportInterface $http)
     {
         $this->middlewares = clone $middlewares;
         $this->http = $http;
@@ -42,7 +42,7 @@ class HttpMiddlewareStack
     }
 
     /**
-     * @return HttpMiddleware
+     * @return HttpMiddlewareInterface
      */
     private function pop()
     {

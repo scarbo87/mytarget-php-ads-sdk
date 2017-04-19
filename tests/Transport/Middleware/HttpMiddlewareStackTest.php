@@ -4,8 +4,8 @@ namespace tests\scarbo87\RestApiSdk\Transport\Middleware;
 
 use scarbo87\RestApiSdk\Context;
 use GuzzleHttp\Psr7\Response;
-use scarbo87\RestApiSdk\Transport\HttpTransport;
-use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddleware;
+use scarbo87\RestApiSdk\Transport\HttpTransportInterface;
+use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareInterface;
 use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStack;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -13,12 +13,12 @@ use Psr\Http\Message\ResponseInterface;
 class HttpMiddlewareStackTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|HttpMiddleware
+     * @var \PHPUnit_Framework_MockObject_MockObject|HttpMiddlewareInterface
      */
     protected $middleware;
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|HttpTransport
+     * @var \PHPUnit_Framework_MockObject_MockObject|HttpTransportInterface
      */
     protected $http;
 
@@ -29,8 +29,8 @@ class HttpMiddlewareStackTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->middleware = $this->getMockForAbstractClass(HttpMiddleware::class, [], "", false);
-        $this->http = $this->getMockForAbstractClass(HttpTransport::class, [], "", false);
+        $this->middleware = $this->getMockForAbstractClass(HttpMiddlewareInterface::class, [], "", false);
+        $this->http = $this->getMockForAbstractClass(HttpTransportInterface::class, [], "", false);
         $this->request = $this->getMockForAbstractClass(RequestInterface::class, [], "", false);
     }
 
@@ -57,7 +57,7 @@ class HttpMiddlewareStackTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestCallsManyMiddlewares()
     {
-        $finalMiddleware = $this->getMockForAbstractClass(HttpMiddleware::class, [], "", false);
+        $finalMiddleware = $this->getMockForAbstractClass(HttpMiddlewareInterface::class, [], "", false);
 
         $middlewares = new \SplStack();
         $middlewares->push($finalMiddleware);

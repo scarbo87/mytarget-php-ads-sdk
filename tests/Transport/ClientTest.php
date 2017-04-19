@@ -9,7 +9,7 @@ use GuzzleHttp\Psr7 as psr;
 use scarbo87\RestApiSdk\Client;
 use scarbo87\RestApiSdk\Transport\Exception as ex;
 use scarbo87\RestApiSdk\Transport\GuzzleHttpTransport;
-use scarbo87\RestApiSdk\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\HttpTransportInterface;
 use scarbo87\RestApiSdk\Transport\Middleware\HttpMiddlewareStackPrototype;
 use scarbo87\RestApiSdk\Transport\RequestFactory;
 use PHPUnit_Framework_MockObject_MockObject;
@@ -20,7 +20,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 {
     public function testRequestSuccess()
     {
-        /** @var HttpTransport|PHPUnit_Framework_MockObject_MockObject $http */
+        /** @var HttpTransportInterface|PHPUnit_Framework_MockObject_MockObject $http */
         $http = $this->createMock(GuzzleHttpTransport::class);
 
         $http

@@ -3,10 +3,9 @@
 namespace scarbo87\RestApiSdk\Transport;
 
 use GuzzleHttp\Psr7\Request;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\UriInterface;
 
-class RequestFactory
+class RequestFactory implements RequestFactoryInterface
 {
     /**
      * @var array
@@ -21,6 +20,9 @@ class RequestFactory
      */
     protected $baseAddress;
 
+    /**
+     * @param UriInterface $baseAddress
+     */
     public function __construct(UriInterface $baseAddress)
     {
         $this->baseAddress = $baseAddress;
@@ -35,12 +37,7 @@ class RequestFactory
     }
 
     /**
-     * @param string     $method
-     * @param string     $path
-     * @param array|null $query
-     * @param array|null $headers
-     *
-     * @return RequestInterface
+     * @inheritdoc
      */
     public function create($method, $path, array $query = null, array $headers = null)
     {

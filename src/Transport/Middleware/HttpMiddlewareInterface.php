@@ -6,7 +6,7 @@ use scarbo87\RestApiSdk\Context;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-interface HttpMiddleware
+interface HttpMiddlewareInterface
 {
     /**
      * The middleware can decide whether it needs to call the next middleware
@@ -24,6 +24,7 @@ interface HttpMiddleware
      * @param RequestInterface $request
      * @param HttpMiddlewareStack $stack
      * @param Context $context
+     *
      * @return ResponseInterface
      */
     public function request(RequestInterface $request, HttpMiddlewareStack $stack, Context $context);

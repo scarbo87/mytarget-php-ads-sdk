@@ -2,17 +2,17 @@
 
 namespace scarbo87\RestApiSdk\Transport\Middleware;
 
-use scarbo87\RestApiSdk\Transport\HttpTransport;
+use scarbo87\RestApiSdk\Transport\HttpTransportInterface;
 
 class HttpMiddlewareStackPrototype extends HttpMiddlewareStack
 {
     /**
-     * @param HttpMiddleware[] $middlewares
-     * @param HttpTransport $http
+     * @param HttpMiddlewareInterface[] $middlewares
+     * @param HttpTransportInterface    $http
      *
      * @return HttpMiddlewareStackPrototype
      */
-    public static function fromArray(array $middlewares, HttpTransport $http)
+    public static function fromArray(array $middlewares, HttpTransportInterface $http)
     {
         $stack = new \SplStack();
         array_map([$stack, 'push'], $middlewares);
@@ -21,11 +21,11 @@ class HttpMiddlewareStackPrototype extends HttpMiddlewareStack
     }
 
     /**
-     * @param HttpTransport $http
+     * @param HttpTransportInterface $http
      *
      * @return HttpMiddlewareStackPrototype
      */
-    public static function newEmpty(HttpTransport $http)
+    public static function newEmpty(HttpTransportInterface $http)
     {
         return new HttpMiddlewareStackPrototype(new \SplStack(), $http);
     }
@@ -39,9 +39,9 @@ class HttpMiddlewareStackPrototype extends HttpMiddlewareStack
     }
 
     /**
-     * @param HttpMiddleware $middleware
+     * @param HttpMiddlewareInterface $middleware
      */
-    public function push(HttpMiddleware $middleware)
+    public function push(HttpMiddlewareInterface $middleware)
     {
         $this->middlewares->push($middleware);
     }

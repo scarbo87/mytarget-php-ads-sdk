@@ -11,13 +11,14 @@ use scarbo87\RestApiSdk\Transport\Exception as sdkEx;
 /**
  * An implementation of HttpTransport that uses Guzzle and depends on "guzzlehttp/guzzle" composer package
  */
-class GuzzleHttpTransport implements HttpTransport
+class GuzzleHttpTransport implements HttpTransportInterface
 {
-    /**
-     * @var ClientInterface
-     */
+    /** @var ClientInterface */
     private $guzzle;
 
+    /**
+     * @param ClientInterface $guzzle
+     */
     public function __construct(ClientInterface $guzzle)
     {
         $this->guzzle = $guzzle;
@@ -29,7 +30,7 @@ class GuzzleHttpTransport implements HttpTransport
     public function request(RequestInterface $request, Context $context)
     {
         try {
-            return $this->guzzle->send($request, ["http_errors" => false]);
+            return $this->guzzle->send($request, ['http_errors' => false]);
         } catch (guzzleEx\GuzzleException $e) {
             if ($e instanceof guzzleEx\RequestException) {
                 $response = $e->getResponse();

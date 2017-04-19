@@ -18,13 +18,11 @@ class Context
     }
 
     /**
-     * @param array|null $parameters
-     *
-     * @return static
+     * @return array|null
      */
-    public static function params(array $parameters = null)
+    public function getParameters()
     {
-        return new static(null, null, $parameters);
+        return $this->parameters;
     }
 
     /**
@@ -58,13 +56,5 @@ class Context
     public function getParameter($key)
     {
         return isset($this->parameters[$key]) ? $this->parameters[$key] : null;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getParameters()
-    {
-        return $this->parameters;
     }
 }

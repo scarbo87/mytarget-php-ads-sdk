@@ -7,11 +7,11 @@ use scarbo87\RestApiSdk\Transport\Exception\NetworkException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-interface HttpTransport
+interface HttpTransportInterface
 {
     /**
      * @param RequestInterface $request
-     * @param Context $context
+     * @param Context          $context
      *
      * @return ResponseInterface
      * @throws NetworkException
