@@ -55,6 +55,13 @@ class LoggingMiddleware implements HttpMiddlewareInterface
     protected function logError(RequestInterface $request, RequestException $exception)
     {
         $this->logger->debug('Request: ' . str($request));
-        $this->logger->error('Request exception: ' . $exception->getMessage(), ['exception' => $exception]);
+        $this->logger->error(
+            'Request exception: ' . $exception->getMessage(),
+            [
+                'exception' => $exception,
+                'request' => str($exception->request),
+                'response' => str($exception->response),
+            ]
+        );
     }
 }

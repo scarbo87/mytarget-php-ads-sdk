@@ -10,10 +10,7 @@ class RequestFactory implements RequestFactoryInterface
     /**
      * @var array
      */
-    protected $defaultHeaders = [
-        'Content-Type' => 'application/json',
-        'Accept' => 'application/json',
-    ];
+    protected $defaultHeaders;
 
     /**
      * @var UriInterface
@@ -22,17 +19,11 @@ class RequestFactory implements RequestFactoryInterface
 
     /**
      * @param UriInterface $baseAddress
+     * @param array        $headers
      */
-    public function __construct(UriInterface $baseAddress)
+    public function __construct(UriInterface $baseAddress, array $headers = ['Content-Type' => 'application/json', 'Accept' => 'application/json'])
     {
         $this->baseAddress = $baseAddress;
-    }
-
-    /**
-     * @param array $headers
-     */
-    public function setDefaultHeaders(array $headers)
-    {
         $this->defaultHeaders = $headers;
     }
 
