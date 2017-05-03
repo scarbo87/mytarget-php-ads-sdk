@@ -30,6 +30,12 @@ class ScalarType implements Type
             return null;
         }
 
-        return $value;
+        switch ($type) {
+            case "int":    return (int)$value;
+            case "bool":   return (bool)$value;
+            case "float":  return (float)$value;
+            case "string": return (string)$value;
+            default:       return $value;
+        }
     }
 }

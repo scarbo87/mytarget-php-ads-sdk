@@ -36,11 +36,11 @@ class ScalarTypeTest extends \PHPUnit_Framework_TestCase
      * @param $value
      * @param $snapshot
      */
-    public function testItMakesSnapshot($value, $snapshot)
+    public function testItMakesSnapshot($type, $value, $snapshot)
     {
         $scalarType = new ScalarType();
 
-        $result = $scalarType->snapshot($value, 'anyType', $this->mapper);
+        $result = $scalarType->snapshot($value, $type, $this->mapper);
 
         $this->assertSame($snapshot, $result);
     }
@@ -102,15 +102,38 @@ class ScalarTypeTest extends \PHPUnit_Framework_TestCase
     {
         // input value, result value
         return [
-            'null from array' => [[], null],
-            'null from resource' => [fopen(__FILE__, 'r'), null],
-            'null from object' => [new \stdClass(), null],
+            'null from array' => ['anyType', [], null],
+            'null from resource' => ['anyType', fopen(__FILE__, 'r'), null],
+            'null from object' => ['anyType', new \stdClass(), null],
 
-            'integer from integer' => [1, 1],
-            'float from float' => [1.2, 1.2],
-            'string from string' => ['A', 'A'],
-            'boolean from negative boolean' => [false, false],
-            'boolean from positive boolean' => [true, true],
+            'integer from integer' => ['anyType', 1, 1],
+            'float from float' => ['anyType', 1.2, 1.2],
+            'string from string' => ['anyType', 'A', 'A'],
+            'boolean from negative boolean' => ['anyType', false, false],
+            'boolean from positive boolean' => ['anyType', true, true],
+
+            'string from integer' => ['string', 1, "1"],
+            'string from float' => ['string', 1.2, "1.2"],
+            'string from positive bool' => ['string', true, "1"],
+            'string from negative bool' => ['string', false, ""],
+
+            'float from int' => ['float', 1, 1.0],
+            'float from string' => ['float', "1.45", 1.45],
+            'float from positive bool' => ['float', true, 1.0],
+            'float from negative bool' => ['float', false, 0.0],
+
+            'int from float' => ['int', 1.99, 1],
+            'int from string' => ['int', "1.99", 1],
+            'int from positive bool' => ['int', true, 1],
+            'int from negative bool' => ['int', false, 0],
+
+            'positive bool from float' => ['bool', 1.99, true],
+            'positive bool from string' => ['bool', "-1.99", true],
+            'positive bool from int' => ['bool', 1, true],
+
+            'negative bool from float' => ['bool', 0.00, false],
+            'negative bool from string' => ['bool', "0", false],
+            'negative bool from int' => ['bool', 0, false],
         ];
     }
 }
