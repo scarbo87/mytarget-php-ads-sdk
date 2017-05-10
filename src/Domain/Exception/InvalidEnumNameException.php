@@ -12,6 +12,6 @@ class InvalidEnumNameException extends \InvalidArgumentException
      */
     public static function create($name, $enumClass)
     {
-        return static(sprintf('Name "%s" does not exist in %s', $name, $enumClass));
+        return new static(sprintf('Name "%s" does not exist in %s', $name, $enumClass));
     }
 }
