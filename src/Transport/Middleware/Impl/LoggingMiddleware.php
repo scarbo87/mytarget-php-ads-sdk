@@ -59,8 +59,8 @@ class LoggingMiddleware implements HttpMiddlewareInterface
             'Request exception: ' . $exception->getMessage(),
             [
                 'exception' => $exception,
-                'request' => str($exception->request),
-                'response' => str($exception->response),
+                'request'   => str($exception->request),
+                'response'  => $exception->response ? str($exception->response) : null,
             ]
         );
     }
