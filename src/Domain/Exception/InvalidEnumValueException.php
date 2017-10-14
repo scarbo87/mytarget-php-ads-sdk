@@ -12,6 +12,6 @@ class InvalidEnumValueException extends \InvalidArgumentException
      */
     public static function create($value, $enumClass)
     {
-        return static(sprintf('Value "%s" does not exist in %s', $value, $enumClass));
+        return new static(sprintf('Value "%s" does not exist in %s', $value, $enumClass));
     }
 }

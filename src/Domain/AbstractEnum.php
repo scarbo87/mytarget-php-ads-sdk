@@ -40,6 +40,14 @@ abstract class AbstractEnum
     }
 
     /**
+     * @return static
+     */
+    public static function newEmpty()
+    {
+        return new static(null);
+    }
+
+    /**
      * @param string|int|float $value
      * @return static
      */
